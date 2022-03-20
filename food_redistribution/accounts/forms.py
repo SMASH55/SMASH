@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 from .models import Post, Restaurant, FoodRedistributor
 
 
-class RestuarantUserForm(UserCreationForm):
+class restaurantUserForm(UserCreationForm):
     name_of_restaurant = forms.CharField(
         label="Name of Restaurant", min_length=2, max_length=50, required=True
     )

@@ -30,7 +30,7 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 from .models import *
 from .forms import (
-    RestuarantUserForm,
+    restaurantUserForm,
     FoodRedistributorUserForm,
     PostForm,
     UserUpdateForm,
@@ -44,7 +44,7 @@ def register_restaurant(request):
     if request.user.is_authenticated:
         return redirect("accounts:home")
     else:
-        form = RestuarantUserForm(request.POST)
+        form = restaurantUserForm(request.POST)
         if request.method == "POST":  # pragma: no cover
             if form.is_valid():
                 user = form.save(commit=False)
@@ -79,7 +79,7 @@ def register_restaurant(request):
                 )
 
         context = {"form": form}
-        return render(request, "accounts/restuarant_register.html", context)
+        return render(request, "accounts/restaurant_register.html", context)
 
 
 def activate(request, uidb64, token):
@@ -190,7 +190,7 @@ def res_check(user):
         return True
 
 
-def login_restuarant(request):
+def login_restaurant(request):
     if request.user.is_authenticated:
         return redirect("accounts:home")
     else:
@@ -206,7 +206,7 @@ def login_restuarant(request):
                 messages.info(request, "Username or password is incorrect")
 
         context = {}
-        return render(request, "accounts/restuarantlogin.html", context)
+        return render(request, "accounts/restaurantlogin.html", context)
 
 
 def login_foodredistributor(request):
@@ -273,7 +273,7 @@ def profile_update(request):
     return render(request, "accounts/updateprofile.html", context)
 
 
-def logout_restuarant(request):
+def logout_restaurant(request):
     logout(request)
     return redirect("accounts:login")
 

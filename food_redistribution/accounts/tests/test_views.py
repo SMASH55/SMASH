@@ -261,14 +261,14 @@ class ViewTests(BaseTest):
 
     def test_restaurant_logout_redirect(self):
         """
-        def logout_restuarant(request):
+        def logout_restaurant(request):
             logout(request)
             return redirect("login")
 
             # Log out
         self.client.logout()
 
-        path("restuarantlogout/", views.logout_restuarant, name="logout"),
+        path("restaurantlogout/", views.logout_restaurant, name="logout"),
         path("foodredislogout/", views.logout_foodredistributor, name="logout2"),
         """
         c = Client()
@@ -381,7 +381,7 @@ class ViewTestsAgain(TestCase):
             "password1": "qaz2wsedc4rf",
             "password2": "qaz2wsedc4rf",
         }
-        form = RestuarantUserForm(data)
+        form = restaurantUserForm(data)
         # response = c.post(data)
         self.assertTrue(form.is_valid())
 
@@ -426,7 +426,7 @@ class TestUserProfileCreation(TestCase):
             "password1": "qaz2wsedc4rf",
             "password2": "qaz2wsedc4rf",
         }
-        form = RestuarantUserForm(data)
+        form = restaurantUserForm(data)
         self.assertTrue(form.is_valid())
 
     def test_access_signup(self):

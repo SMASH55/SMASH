@@ -20,9 +20,9 @@ urlpatterns = [
     path("foodredis/", views.register_foodredistributor, name="register2"),
     path("login/", views.choose_login, name="chooselogin"),
     path("about/", views.about, name="about"),
-    path("restaurantlogin/", views.login_restuarant, name="login"),
+    path("restaurantlogin/", views.login_restaurant, name="login"),
     path("foodredislogin/", views.login_foodredistributor, name="login2"),
-    path("restuarantlogout/", views.logout_restuarant, name="logout"),
+    path("restaurantlogout/", views.logout_restaurant, name="logout"),
     path("foodredislogout/", views.logout_foodredistributor, name="logout2"),
     path(
         "reset_password/",
