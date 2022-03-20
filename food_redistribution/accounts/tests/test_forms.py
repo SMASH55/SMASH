@@ -1,11 +1,11 @@
 from django.test import TestCase
-from accounts.forms import RestuarantUserForm, FoodRedistributorUserForm, PostForm
+from accounts.forms import restaurantUserForm, FoodRedistributorUserForm, PostForm
 from accounts.models import User
 
 
 class TestForms(TestCase):
     def test_restaurantUserForm_valid_data(self):
-        form = RestuarantUserForm(
+        form = restaurantUserForm(
             data={
                 "name_of_restaurant": "Woodbricks oven",
                 "email": "woodbricks@email.com",
@@ -20,7 +20,7 @@ class TestForms(TestCase):
         self.assertTrue(form.is_valid())
 
     def test_restaurantUserForm_no_data(self):
-        form = RestuarantUserForm(data={})
+        form = restaurantUserForm(data={})
         self.assertFalse(form.is_valid())
         self.assertEquals(len(form.errors), 7)
 
