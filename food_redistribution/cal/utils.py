@@ -15,7 +15,17 @@ class Calendar(HTMLCalendar):
         events_per_day = events.filter(start_time__day=day)
         d = ""
         for event in events_per_day:
-            d += f"<li> {event.get_html_url} </li>"  # pragma: no cover
+            if event.category == "event":
+                d += f"<div id='event'><li> {event.get_html_url} </li></div>"  # pragma: no cover
+            elif event.category == "donation":
+                d += f"<div id='donation'><li> {event.get_html_url} </li></div>"  # pragma: no cover    
+            elif event.category == "volunteer":
+                d += f"<div id='volunteer'><li> {event.get_html_url} </li></div>"  # pragma: no cover
+            elif event.category == "discount":
+                d += f"<div id='discount'><li> {event.get_html_url} </li></div>"  # pragma: no cover
+            elif event.category == "free":
+                d += f"<div id='free'><li> {event.get_html_url} </li></div>"  # pragma: no cover
+            
 
         if day != 0:
             # return f"<td class='calcell mdl-data-table__cell--non-numeric'><span class='date'>{day}</span><ul> \

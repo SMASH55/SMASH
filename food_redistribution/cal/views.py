@@ -23,12 +23,24 @@ class CalendarView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        date = get_date(self.request.GET.get("year", None))
+        year = str(date.year)
+        month = str(date.month)
+        # print(d.year)
+        # print(str(year)[:4])
+
         d = get_date(self.request.GET.get("month", None))
+        # print(str(year[5:7]))
         cal = Calendar(d.year, d.month)
+        events_this_month = Event.objects.filter(start_time__year=year, start_time__month=month)
+        print(events_this_month)
+        for event in events_this_month:
+            print(event.category)
         html_cal = cal.formatmonth(withyear=True)
         context["calendar"] = mark_safe(html_cal)
         context["prev_month"] = prev_month(d)
         context["next_month"] = next_month(d)
+        context["events"] = events_this_month
         return context  # pragma: no cover
 
 
@@ -122,3 +134,8 @@ def event_delete(request, pk):
         event.delete()
         return HttpResponseRedirect(reverse("cal:calendar"))  # pragma: no cover
     return render(request, "cal/delete_event.html", {"event": form})  # pragma: no cover
+
+def get_event_info(request):
+    context = {}
+    context["event_tag"] = Event.objects.get(category=request.category)
+    return render(request, "request", "cal/calender.html", {"event": context})

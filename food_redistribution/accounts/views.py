@@ -1,6 +1,7 @@
 # from django.db.models import fields
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+import time
 
 # from django.forms import inlineformset_factory
 # from django.contrib.auth.forms import UserCreationForm
@@ -73,6 +74,7 @@ def register_restaurant(request):
                 user_profile.is_res = True
                 user_profile.save()
                 email = EmailMessage(mail_subject, message, to=[user_profile.email])
+                time.sleep(1)
                 email.send()
                 return HttpResponse(
                     "Please confirm your email address to complete the registration"
@@ -132,6 +134,7 @@ def register_foodredistributor(request):
                 user_profile.is_food_redis = True
                 user_profile.save()
                 email = EmailMessage(mail_subject, message, to=[user_profile.email])
+                time.sleep(1)
                 email.send()
                 # TO HERE
                 return HttpResponse(

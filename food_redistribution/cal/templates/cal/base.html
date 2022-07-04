@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{% static 'accounts/css/material.min.css' %}"/>
   <link rel="stylesheet" href="{% static 'accounts/css/newnav.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'cal/css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'cal/css/event-style.css' %}">
   <!--<link rel="stylesheet" href="{% static 'cal/css/create-event.css' %}"/>-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +21,6 @@
 <body style="background-image: url('https://images.unsplash.com/photo-1516211697506-8360dbcfe9a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
 background-size: cover;">
 
-  <!--<h1 class="title">{% block title %}{% endblock %}</h1>
-  <hr>-->
   {%  include 'accounts/newnavbar.html' %}
 
   {% block content %}
