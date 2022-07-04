@@ -1,10 +1,17 @@
+
 {% extends 'cal/base.html' %}
+
 
 {% block title %}
 Calendar
 {% endblock %}
 
 {% block content %}
+{% if events %}
+YES
+{% else %}
+None
+{% endif %}
 <div class="mdl-grid">
 	<div class="mdl-cell mdl-cell--1-col">
 		<a class="nav-btn mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" href="{% url 'cal:calendar' %}?{{ prev_month }}">
@@ -16,6 +23,8 @@ Calendar
 	</div>
 	<div class="mdl-cell mdl-cell--2-col">
 		<a class="add-btn mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" href="{% url 'cal:event_new' %}">
+		
+				
 		  <i class="material-icons">add</i>
 		</a>
 	</div>

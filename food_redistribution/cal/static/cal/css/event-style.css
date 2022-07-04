@@ -1,0 +1,19 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* #cal {
+    background-color: blue;
+} */
+
+#free {
+    background-color: red;
+}
+
+#volunteer {
+    background-color: yellow;
+}
+li {
+    list-style: none;
+}
